@@ -1,21 +1,66 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import IndexScreen from "./src/screens/IndexScreen";
+import AccountScreen from "./src/screens/AccountScreen";
+import DashboardScreen from "./src/screens/DashboardScreen";
+import DeviceScreen from "./src/screens/DeviceScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const App = () => {
+  const Tabs = () => {
+    return (
+      <Tab.Navigator initialRouteName="Dashboard">
+        <Tab.Screen
+          name="Dashboard"
+          component={DashboardScreen}
+          options={{
+            tabBarLabel: "Dashboard",
+          }}
+        />
+        <Tab.Screen
+          name="Account"
+          component={AccountScreen}
+          options={{
+            tabBarLabel: "Account",
+          }}
+        />
+        <Tab.Screen
+          name="Device"
+          component={DeviceScreen}
+          options={{
+            tabBarLabel: "Device",
+          }}
+        />
+      </Tab.Navigator>
+    );
+  };
+
+  const mainStack = () => {
+    return (
+      <Stack.Navigator initialRouteName="Index">
+        <Stack.Screen
+          name="Index"
+          component={IndexScreen}
+          options={{
+            title: "Enres",
+          }}
+        />
+        <Stack.Screen
+          name="Tabs"
+          component={Tabs}
+          options={{ title: "Enres" }}
+        />
+      </Stack.Navigator>
+    );
+  };
+
+  return <NavigationContainer>{mainStack()}</NavigationContainer>;
+};
+
+export default App;
