@@ -23,7 +23,6 @@ const PieCharts = () => {
         data={data}
         colorScale={colors}
         labels={({ datum }) => `${datum.x} ${datum.y}%`}
-        labels={false}
         style={{
           labels: { fontSize: 16 },
         }}

@@ -6,6 +6,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 
 import IndexScreen from "./src/screens/IndexScreen";
 import AccountScreen from "./src/screens/AccountScreen";
+import AccountUserScreen from "./src/screens/AccountUserScreen";
+import AccountSettingScreen from "./src/screens/AccountSettingScreen";
 import DashboardScreen from "./src/screens/DashboardScreen";
 import DeviceScreen from "./src/screens/DeviceScreen";
 
@@ -49,6 +51,20 @@ const App = () => {
           component={IndexScreen}
           options={{
             title: "Enres",
+          }}
+        />
+        <Stack.Screen
+          name="AccountUser"
+          component={AccountUserScreen}
+          options={{
+            title: "Account",
+          }}
+        />
+        <Stack.Screen
+          name="AccountSetting"
+          component={AccountSettingScreen}
+          options={{
+            title: "Account",
           }}
         />
         <Stack.Screen
