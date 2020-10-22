@@ -7,7 +7,6 @@ import PieCharts from "../components/PieChart";
 const DashboardScreen = () => {
   return (
     <View style={styles.container}>
-      <Header title="Dashboard" />
       <PieCharts />
       <Text>Build 1 infomation</Text>
     </View>

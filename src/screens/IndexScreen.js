@@ -8,7 +8,7 @@ const IndexScreen = () => {
   return (
     <View style={styles.page}>
       <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
-        <Text style={styles.text}>Enres Application.</Text>
+        <Text style={styles.text}>Enres Demo App.</Text>
       </TouchableOpacity>
     </View>
   );
@@ -19,11 +19,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    borderColor: "red",
-    borderWidth: 2,
   },
   text: {
     fontSize: 38,
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
   },
 });
 

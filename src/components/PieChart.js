@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 0,
     height: 400,
-    borderColor: "grey",
-    borderWidth: 2,
   },
 });
 
