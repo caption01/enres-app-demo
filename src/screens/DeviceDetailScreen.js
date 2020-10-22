@@ -7,7 +7,7 @@ const DeviceLogs = ({ value }) => {
     <View style={styles.logBox}>
       <Text style={styles.logTitle}>Logs</Text>
       <FlatList
-        keyExtractor={(value, index) => index}
+        keyExtractor={(value, index) => `${index}`}
         data={value}
         renderItem={({ item }) => {
           return (
