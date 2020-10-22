@@ -12,14 +12,16 @@ import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 const deviceInitial = [
   { id: "kvar-a-1", name: "Meter-1", status: true, value: [10, 20, 10] },
   { id: "kvar-a-2", name: "Meter-2", status: true, value: [30, 20, 10] },
-  { id: "kw-1-1", name: "Meter-3", status: false, value: [0, 0, 0] },
+  { id: "kw-b-1", name: "Meter-3", status: false, value: [0, 0, 0] },
+  { id: "kw-b-2", name: "Meter-3", status: false, value: [10, 20, 0] },
+  { id: "kw-c-1", name: "Meter-3", status: true, value: [7, 23, 35] },
 ];
 
 const DeviceList = ({ data, goToDetail }) => {
   return (
     <View style={styles.deviceBox}>
       <FlatList
-        keyExtractor={(user) => user.id}
+        keyExtractor={(user) => `${user.id}`}
         data={data}
         renderItem={({ item }) => {
           return (
@@ -64,7 +66,7 @@ const DevicesScreen = ({ navigation }) => {
           style={styles.input}
           placeholder="device-id"
           onChangeText={setSearch}
-          autoCapitalize={false}
+          autoCapitalize="none"
         />
         <FontAwesome name="qrcode" size={40} color="black" />
       </View>
@@ -76,6 +78,8 @@ const DevicesScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
+    backgroundColor: "#ffffff",
+    height: "100%",
   },
   inputBox: {
     flexDirection: "row",

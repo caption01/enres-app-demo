@@ -8,13 +8,18 @@ const AccountUserScreen = () => {
   const [select, setSelect] = useState("operator");
 
   return (
-    <View>
+    <View style={styles.container}>
       <UserInviteForm value={select} onSelectChange={setSelect} />
       <UserLists />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffff",
+    height: "100%",
+  },
+});
 
 export default AccountUserScreen;

@@ -18,12 +18,17 @@ const AccountSettingScreen = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <AccountForm value={account} onTextChange={setAccount} goBack={goBack} />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffff",
+    height: "100%",
+  },
+});
 
 export default AccountSettingScreen;

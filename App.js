@@ -3,6 +3,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import AccountScreen from "./src/screens/AccountScreen";
 import AccountUserScreen from "./src/screens/AccountUserScreen";

@@ -25,7 +25,7 @@ const DeviceLogs = ({ value }) => {
 const DeviceDetailScreen = ({ route }) => {
   const { item } = route.params;
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.infoBox}>
         <FontAwesome
           name="circle"
@@ -42,6 +42,10 @@ const DeviceDetailScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffff",
+    height: "100%",
+  },
   infoBox: {
     flexDirection: "row",
     alignSelf: "center",
