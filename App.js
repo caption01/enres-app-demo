@@ -4,12 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
-import IndexScreen from "./src/screens/IndexScreen";
 import AccountScreen from "./src/screens/AccountScreen";
 import AccountUserScreen from "./src/screens/AccountUserScreen";
 import AccountSettingScreen from "./src/screens/AccountSettingScreen";
 import DashboardScreen from "./src/screens/DashboardScreen";
 import DeviceScreen from "./src/screens/DeviceScreen";
+import DeviceDetailScreen from "./src/screens/DeviceDetailScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,7 +17,14 @@ const Stack = createStackNavigator();
 const App = () => {
   const Tabs = () => {
     return (
-      <Tab.Navigator initialRouteName="Dashboard">
+      <Tab.Navigator
+        initialRouteName="Dashboard"
+        activeColor="#ffffff"
+        inactiveColor="#EBEBEB"
+        barStyle={{
+          backgroundColor: "#00B2A9",
+        }}
+      >
         <Tab.Screen
           name="Dashboard"
           component={DashboardScreen}
@@ -45,13 +52,11 @@ const App = () => {
 
   const mainStack = () => {
     return (
-      <Stack.Navigator initialRouteName="Index">
+      <Stack.Navigator initialRouteName="Tabs">
         <Stack.Screen
-          name="Index"
-          component={IndexScreen}
-          options={{
-            title: "Enres",
-          }}
+          name="Tabs"
+          component={Tabs}
+          options={{ title: "Enres" }}
         />
         <Stack.Screen
           name="AccountUser"
@@ -68,9 +73,11 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="Tabs"
-          component={Tabs}
-          options={{ title: "Enres" }}
+          name="DeviceDetail"
+          component={DeviceDetailScreen}
+          options={{
+            title: "Device",
+          }}
         />
       </Stack.Navigator>
     );
