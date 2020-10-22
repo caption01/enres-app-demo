@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import {
   VictoryChart,
   VictoryPie,
@@ -8,25 +8,56 @@ import {
   VictoryContainer,
 } from "victory-native";
 
-const data = [
-  { x: "Building 1", y: 35 },
-  { x: "Building 2", y: 40 },
-  { x: "Building 3", y: 55 },
-];
+const colors = ["#636362", "#a1a1a1", "#d6d6d6"];
 
-const colors = ["tomato", "orange", "cyan"];
-
-const PieCharts = () => {
+const PieCharts = ({ data }) => {
   return (
     <View style={styles.container}>
       <VictoryPie
         data={data}
         colorScale={colors}
-        labels={({ datum }) => `${datum.x} ${datum.y}%`}
+        labels={({ datum }) => `${datum.y}%`}
         style={{
           labels: { fontSize: 16 },
         }}
         height={350}
+        labelPosition="centroid"
+        style={{
+          labels: { fontSize: 20 },
+        }}
+        events={[
+          {
+            target: "data",
+            eventHandlers: {
+              onPressIn: () => {
+                return [
+                  {
+                    target: "labels",
+                    mutation: (props) => {
+                      const currentText = props.text;
+
+                      if (currentText === props.datum.x) {
+                        return null;
+                      }
+
+                      return {
+                        text: props.datum.x,
+                      };
+                    },
+                  },
+                  {
+                    target: "data",
+                    mutation: ({ style }) => {
+                      return style.fill === "#c43a31"
+                        ? null
+                        : { style: { fill: "#c43a31" } };
+                    },
+                  },
+                ];
+              },
+            },
+          },
+        ]}
       />
     </View>
   );
