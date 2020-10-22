@@ -1,36 +1,56 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 
 import CustomButton from "./Button";
 
-const AccountForm = ({ value, onTextChange }) => {
+const AccountForm = ({ value, onTextChange, goBack }) => {
   return (
     <View style={styles.form}>
       <Text style={styles.title}>Account Infomation</Text>
       <Text style={styles.label}>Name</Text>
       <TextInput
-        placeholder="anme"
+        placeholder="name"
         style={styles.input}
         value={value.name}
-        onTextChange={(input) => onTextChange({ ["name"]: input })}
+        onChangeText={(input) =>
+          onTextChange((prevState) => {
+            return {
+              ...prevState,
+              name: input,
+            };
+          })
+        }
       />
       <Text style={styles.label}>Address</Text>
       <TextInput
         placeholder="address"
         style={styles.input}
         value={value.address}
+        onChangeText={(input) =>
+          onTextChange((prevState) => {
+            return {
+              ...prevState,
+              address: input,
+            };
+          })
+        }
       />
       <Text style={styles.label}>Building No.</Text>
-      <TextInput placeholder="number" style={styles.input} value={value.no} />
+      <TextInput
+        placeholder="number"
+        style={styles.input}
+        value={value.no}
+        onChangeText={(input) =>
+          onTextChange((prevState) => {
+            return {
+              ...prevState,
+              no: input,
+            };
+          })
+        }
+      />
       <View style={styles.itemMid}>
-        <CustomButton title="Edit" callBack={() => console.log("hello")} />
+        <CustomButton title="Edit" callBack={() => goBack()} />
       </View>
     </View>
   );

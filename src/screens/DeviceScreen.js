@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 
-const deviceLists = [
-  { id: "1", name: "Meter-1", status: true, value: [10, 20, 10] },
-  { id: "2", name: "Meter-2", status: true, value: [30, 20, 10] },
-  { id: "3", name: "Meter-3", status: false, value: [0, 0, 0] },
+const deviceInitial = [
+  { id: "kvar-a-1", name: "Meter-1", status: true, value: [10, 20, 10] },
+  { id: "kvar-a-2", name: "Meter-2", status: true, value: [30, 20, 10] },
+  { id: "kw-1-1", name: "Meter-3", status: false, value: [0, 0, 0] },
 ];
 
 const DeviceList = ({ data, goToDetail }) => {
@@ -31,7 +31,7 @@ const DeviceList = ({ data, goToDetail }) => {
                 <MaterialIcons
                   name="error"
                   size={24}
-                  color={item.status ? "grey" : "red"}
+                  color={item.status ? "green" : "red"}
                 />
               </View>
             </TouchableOpacity>
@@ -43,20 +43,32 @@ const DeviceList = ({ data, goToDetail }) => {
 };
 
 const DevicesScreen = ({ navigation }) => {
-  console.log(navigation);
+  const [devices, setDevice] = useState(deviceInitial);
+  const [search, setSearch] = useState("");
+
+  const filterDevice = () => {
+    return devices.filter((device) => device?.id.includes(search));
+  };
 
   const goToDetail = (item) => {
     navigation.navigate("DeviceDetail", { item });
   };
 
+  const deviceList = filterDevice();
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Devices</Text>
       <View style={styles.inputBox}>
-        <TextInput style={styles.input} placeholder="device-id" />
+        <TextInput
+          style={styles.input}
+          placeholder="device-id"
+          onChangeText={setSearch}
+          autoCapitalize={false}
+        />
         <FontAwesome name="qrcode" size={40} color="black" />
       </View>
-      <DeviceList data={deviceLists} goToDetail={goToDetail} />
+      <DeviceList data={deviceList} goToDetail={goToDetail} />
     </View>
   );
 };

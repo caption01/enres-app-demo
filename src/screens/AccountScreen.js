@@ -1,8 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, Button } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import Header from "../components/Header";
 import CustomButton from "../components/Button";
 
 const AccountScreen = () => {

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   btnBox: {
     borderRadius: 10,
     marginTop: 16,
-    backgroundColor: "#00aeef",
+    backgroundColor: "#00B2A9",
     width: 200,
   },
   btn: {
